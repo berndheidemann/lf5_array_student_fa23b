@@ -37,7 +37,7 @@ public class GameOfLifeUI extends JFrame {
                 game.simulate();
                 for (int y = 0; y < 10; y++) {
                     for (int x = 0; x < 10; x++) {
-                        ((JLabel) this.gameField.getComponent(y * 10 + x)).setText(game.getCellStatus(y + 1, x + 1) + "");
+                        ((JLabel) this.gameField.getComponent(y * 10 + x)).setText(game.getCellStatus(y, x) + "");
                     }
                 }
                 SwingUtilities.updateComponentTreeUI(this);
@@ -49,13 +49,13 @@ public class GameOfLifeUI extends JFrame {
         for (int y = 0; y < 10; y++) {
             for (int x = 0; x < 10; x++) {
                 GameFieldJLabel label = new GameFieldJLabel(y, x);
-                label.setText(game.getCellStatus(y + 1, x + 1) + "");
+                label.setText(game.getCellStatus(y, x) + "");
                 label.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         GameFieldJLabel clicked = (GameFieldJLabel) e.getSource();
-                        if (game.getCellStatus(clicked.getyPosi() + 1, clicked.getxPosi() + 1) != '-') {
-                            game.setAliveCell(clicked.getyPosi() + 1, clicked.getxPosi() + 1);
+                        if (game.getCellStatus(clicked.getyPosi(), clicked.getxPosi()) != '-') {
+                            game.setAliveCell(clicked.getyPosi(), clicked.getxPosi());
                             clicked.setText("O");
                         }
                     }
@@ -114,6 +114,12 @@ class GameFieldJLabel extends JLabel {
         } else {
             super.setText(" ");
             setBackground(Color.WHITE);
+
+            GameOfLife gameFoo = new GameOfLife();
+            gameFoo.initializeBoard(10);
+            gameFoo.setAliveCell(0, 0);
         }
     }
 }
+
+

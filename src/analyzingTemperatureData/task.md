@@ -15,4 +15,3 @@ Die höchste Anzahl von hintereinander liegenden Werten, welche den Mindestwert 
 
 1. Implementiere in der Klasse `TemperatureAnalyzer` die oben beschriebene Methode
 `public int getMaxPeriod(double[] temperatureList, double minValue)`.
-

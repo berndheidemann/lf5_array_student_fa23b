@@ -3,7 +3,6 @@ package arrayCalculator;
 
 public class ArrayCalculator {
     public int[] duplicateArrayValues(int[] array) {
-
         return null;
     }
 
